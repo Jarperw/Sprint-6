@@ -32,7 +32,7 @@ export default {
   created() {
     fetch("/datos.json")
       .then((datos) => datos.json())
-      .then((resp) => resp.map((value) => this.arrayHistoria.push(value.text)));
+      .then((resp) => resp.map((value) => this.arrayHistoria.push({text: value.text, img: value.img})));
   },
 }
 </script>

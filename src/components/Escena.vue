@@ -5,15 +5,26 @@
       v-for="(item, index) in historia" 
       :key="index"
     >
-      {{ item }}
+      {{ item.text }}
     </p>
+    <div class="fondo" :style="mostrarImagen"></div>
   </div>
 </template>
 
 <script>
 export default {
   name: 'Escena',
-  props: ["historia", "currentSentence"]
+  props: ["historia", "currentSentence"],
+  data() {
+    return {
+      img: ''
+    }
+  },
+  computed: {
+    mostrarImagen() {
+      return this.img = { backgroundImage: `url(${this.historia[this.currentSentence].img})` }
+    }
+  }
 }
 </script>
 
@@ -24,10 +35,22 @@ p {
   margin: 1.2em;
   border: 0.13em solid #000;
   border-radius: 3em;
+  background-color: #fffa;
 }
 
 .activo {
   background: #f99;
+}
+
+.fondo {
+  position: fixed;
+  z-index: -1;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
 }
 
 @media (max-width: 992px) {
