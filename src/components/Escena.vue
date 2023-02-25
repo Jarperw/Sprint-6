@@ -1,6 +1,10 @@
 <template>
   <div>
-    <p v-for="(item, index) in historia" :key="index">
+    <p
+      :class="{ activo: currentSentence == index }" 
+      v-for="(item, index) in historia" 
+      :key="index"
+    >
       {{ item }}
     </p>
   </div>
@@ -9,7 +13,7 @@
 <script>
 export default {
   name: 'Escena',
-  props: ["historia"]
+  props: ["historia", "currentSentence"]
 }
 </script>
 
@@ -20,6 +24,10 @@ p {
   margin: 1.2em;
   border: 0.13em solid #000;
   border-radius: 3em;
+}
+
+.activo {
+  background: #f99;
 }
 
 @media (max-width: 992px) {

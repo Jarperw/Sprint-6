@@ -1,18 +1,27 @@
 <template>
   <div>
-    <Escena :historia="arrayHistoria"></Escena>
+    <Botons
+      @contador="currentSentence = $event"
+      :historia="arrayHistoria"
+    ></Botons>
+    <Escena
+      :historia="arrayHistoria"
+      :currentSentence="currentSentence"
+    ></Escena>
   </div>
 </template>
 
 <script>
 import Escena from './Escena.vue';
+import Botons from './Botons.vue';
 
 export default {
   name: "Home",
-  components: { Escena },
+  components: { Escena, Botons },
   data() {
     return {
-      arrayHistoria: []
+      arrayHistoria: [],
+      currentSentence: 0
     };
   },
   created() {
