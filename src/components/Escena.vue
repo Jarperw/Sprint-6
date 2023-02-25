@@ -7,7 +7,7 @@
     >
       {{ item.text }}
     </p>
-    <div class="fondo" :style="mostrarImagen"></div>
+    <div class="fondo" :style="mostrarImagen()"></div>
   </div>
 </template>
 
@@ -15,14 +15,9 @@
 export default {
   name: 'Escena',
   props: ["historia", "currentSentence"],
-  data() {
-    return {
-      img: ''
-    }
-  },
-  computed: {
+  methods: {
     mostrarImagen() {
-      return this.img = { backgroundImage: `url(${this.historia[this.currentSentence].img})` }
+      return { backgroundImage: `url(${this.historia[this.currentSentence].img})` }
     }
   }
 }
