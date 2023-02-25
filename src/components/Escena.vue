@@ -1,11 +1,14 @@
 <template>
   <div>
-    <p>El nostre heroi estava surant per l'espai sideral quan a la llunyania va albirar una nau espacial</p>
+    <p v-for="(item, index) in historia" :key="index">
+      {{ item }}
+    </p>
   </div>
 </template>
 
 <script>
 export default {
-  name: 'Escena'
+  name: 'Escena',
+  props: ["historia"]
 }
 </script>
